@@ -1,0 +1,46 @@
+.room-option-form {
+  margin-top: 80px;
+}
+.hotel-nav-list {
+    margin-left: 15px;
+}
+.roomForm {
+  width: 80%;
+}
+.form-control {
+  width: 100%;
+}
+
+.previewImage {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.room-option-form,
+.form-control,
+.roomForm {
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+}
+
+#form-wrapper-div {
+    position: absolute;
+    left: 15px;
+    width: 80%;
+}
+
+
+@media screen and (max-width: 480px) {
+    #form-wrapper-div {
+        left: 5px;
+        width: 100%;
+    }
+    #selectedRoomTable {
+        width: 100%;
+        overflow-x: auto;
+    }
+}

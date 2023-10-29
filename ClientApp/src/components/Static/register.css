@@ -1,0 +1,48 @@
+#register-frame {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    width: 50%;
+    height: 500px;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.partial-input {
+    width: 45%;
+    float: left;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+.input {
+    margin-top: 20px;
+    float: left;
+    margin-left: 5px;
+    width: 91%;
+}
+.register-alerts {
+    position: absolute;
+    top: 10px;
+    width: 50%;
+}
+
+.close {
+    float: right;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none
+}
+.close:hover {
+    font-size: 18px;
+}
+@media screen and (max-width: 767px) {
+    .partial-input, #register-frame, .register-alerts {
+        width: 100%;
+    }
+    #register-frame {
+        height: 570px;
+    }
+    .input {
+        width: 100%;
+    }
+}

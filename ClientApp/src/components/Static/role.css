@@ -1,0 +1,28 @@
+#role-table-div {
+    float: left;
+    width: 90%;
+    margin-top: 5px;
+    margin-left: 2px;
+    min-height: 200px;
+    height: auto;
+    overflow: auto;
+    margin-top: 20px;
+}
+
+#roles-seach, #roles-create {
+    float: left;
+    width: 50%;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#roles-create {
+    width: 45%;
+}
+
+#role-search-button, #role-create-button{ 
+    float: left;
+    margin-left: 15px;
+    margin-top: 5px;
+}

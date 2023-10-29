@@ -1,0 +1,120 @@
+#register-hotel {
+    background-image: linear-gradient(to right top, #051937, #002742, #003549, #00424c, #174f4d);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 99vw;
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#hotel-register-frame {
+    width: 80%;
+    height: 90vh;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 5px;
+    overflow: auto;
+    overflow-x:hidden;
+}
+.input {
+    width: 90%;
+}
+.datetime {
+    float: left;
+    margin-left: 10px;
+    width: 40%;
+}
+.amenities-label {
+    float: left;
+    margin-left: 5px;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+    margin: 10px;
+    font-weight: lighter;
+}
+
+.file-input {
+    float: left;
+    width: 90%;
+    text-align: left;
+    margin: 5px;
+    margin-left: 5px;
+    font-weight: lighter;
+}
+.switch {
+    position: relative;
+    float: right;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+    margin-right: 20%;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right top, #051937, #002742, #003549, #00424c, #174f4d);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 15px;
+
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+   box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+   -webkit-transform: translateX(26px);
+   -ms-transform: translateX(26px);
+   transform: translateX(26px);
+  }
+  .imgPreviwe {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin-left: 15px;
+  }
+  .imgPreviwe:hover {
+    border: 2px solid black;
+  }
+@media screen and (max-width: 767px) {
+    #hotel-register-frame {
+        width: 100%;
+        height: 100vh;
+    }
+    .amenities-label-name {
+        font-size: 14px;
+    }
+}

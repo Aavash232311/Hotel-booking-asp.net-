@@ -1,0 +1,34 @@
+#hotel-nav-bar {
+    width: 100vw;
+    position: absolute;
+    height: 80px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+
+.nav-list {
+    float: right;
+    margin-right: 0;
+}
+.navbar-brand {
+    margin-left: 15px;
+}
+
+.navbar {
+    list-style: none;
+}
+
+@media screen and (max-width: 720px) {
+    nav {
+        width: 100vw;
+    }
+    html, body {
+        width: 100vw;
+    }
+}

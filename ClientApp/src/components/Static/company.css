@@ -1,0 +1,67 @@
+#company-table {
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    overflow-inline: hidden;
+}
+
+#company-search {
+    float: left;
+    width: 50%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+#company-search-button {
+    float: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+.registrationInput{ 
+    float: left;
+    margin-left: 5px;
+    width: 50%;
+    margin-top: 20px;
+}
+#load-more-btn:hover {
+    color: blue;
+}
+
+.edit-company-details {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    position: absolute;
+    left: 30%;
+    width: 50%;
+    height: 500px;
+    z-index: 999;
+    background-color: white;
+    overflow: auto;
+}
+.company-input {
+    float: left;
+    margin-left: 5px;
+    width: 95%;
+}
+
+.submission-btn {
+    float: left;
+    margin-left: 5px;
+    width: 45%;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .edit-company-details {
+        width: 100%;
+        left: 0;
+        position: fixed;
+        top: 20%;
+    }
+    .side-label {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,140 @@
+#nav-toggle {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+#admin {
+  display: flex;
+}
+#main-nav {
+  display: none;
+}
+
+#labelHeading {
+  color: white;
+  cursor: none;
+}
+
+#navbar {
+  width: 200px;
+  height: 100vh;
+  padding: 20px 0;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  position: absolute;
+  left: 0;
+  background: #ad5389; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3c1053,
+    #ad5389
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3c1053,
+    #ad5389
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  z-index: 9999;
+}
+
+#adminFrame {
+  width: 100vw !important;
+  background-size: cover;
+  height: 100vh;
+  background-repeat: repeat;
+  float: right;
+  position: absolute;
+  right: 0;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+#navbar.show {
+  transform: translateX(0);
+}
+
+#content {
+  float: right;
+}
+
+#navbar.show {
+  transform: translateX(0);
+}
+
+#nav-hide-option {
+  font-size: 24px;
+  float: right;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  color: white;
+  margin-right: 15px;
+}
+
+#navbar a {
+  display: block;
+  color: #fff;
+  padding: 20px;
+  text-decoration: none;
+}
+
+#navbar a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+#nav-hide-option {
+  display: none;
+}
+
+.commonFrame {
+  height: 550px;
+  background-color: white;
+  width: 87%;
+  margin-top: 50px;
+  float: right;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.side-label {
+  float: left;
+  margin-left: 5px;
+  width: 100%;
+  text-align: left;
+  font-weight: lighter;
+  user-select: none;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  #nav-hide-option {
+    display: block;
+  }
+  .commonFrame {
+    position: absolute;
+    left: 0;
+    width: 99vw;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+  body,
+  html {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .side-label {
+    color: black;
+  }
+}
+@media (min-width: 768px) {
+  #nav-toggle {
+    display: none;
+  }
+
+  #navbar {
+    transform: translateX(0);
+  }
+}

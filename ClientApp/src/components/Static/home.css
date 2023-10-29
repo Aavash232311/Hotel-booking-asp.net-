@@ -1,0 +1,77 @@
+#home-page-upper-frame {
+    background-image: linear-gradient(to right top, #051937, #002742, #003549, #00424c, #174f4d);
+    width: 100vw;
+    height: 600px;
+    position: absolute;
+    left: 0;
+}
+
+#site-title {
+    margin-top: 8%;
+    color: white;
+    font-weight: bold;
+    user-select: none;
+}
+
+#search-hotels {
+    width: 85%;
+    margin-top: 10px;
+    background-color: transparent;
+    font-style: 30px;
+    color: white;
+    user-select: none;
+    margin-left: 5px;
+    float: left;
+    margin-top: 20px;
+    border: none;
+    border-bottom: 1px solid white;
+}
+#search-hotels:focus {
+    outline-width: 0;
+    border-bottom: 1px solid #259A65;
+}
+#search-engene-frame {
+    background-color: transparent;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    width: 50%;
+    height: 80px;
+    border-radius: 8px;
+}
+
+.search-home-page-button {
+    float: left;
+    margin-right: 10px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    border: 1px solid #259A65;
+    margin-left: 10px;
+}
+.search-home-page-button:hover {
+    border: 2px solid #259A65;
+}
+
+#home-footer {
+    top: 90%;
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    user-select: none;
+    text-align: left;
+    margin: 5px;
+}
+
+@media screen and (max-width: 1130px) {
+    #search-engene-frame {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 703px) {
+    #search-engene-frame {
+        width: 100%;
+    }
+    #search-hotels {
+        width: 70%;
+    }
+}
