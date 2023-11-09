@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Bespeaking__Backup.Migrations
+namespace Bespeaking.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
     partial class AuthDbContextModelSnapshot : ModelSnapshot
@@ -21,6 +21,86 @@ namespace Bespeaking__Backup.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Bespeaking.Models.BalanceSheet", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ApiServerResponse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("api")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid?>("clientId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("completed")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("discount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("metchantKey")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("pid")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("room")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("clientId");
+
+                    b.ToTable("BalanceSheets");
+                });
+
+            modelBuilder.Entity("Bespeaking.Models.CheckIn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("adults")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("checkIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("checkOut")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("hotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("room")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("userId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("hotelId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Checkin");
+                });
 
             modelBuilder.Entity("Bespeaking.Models.Company", b =>
                 {
@@ -55,6 +135,29 @@ namespace Bespeaking__Backup.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Comapnies");
+                });
+
+            modelBuilder.Entity("Bespeaking.Models.Esewa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("MerchantKey")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid?>("userId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Esewas");
                 });
 
             modelBuilder.Entity("Bespeaking.Models.Hotel", b =>
@@ -136,10 +239,13 @@ namespace Bespeaking__Backup.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<DateTime>("created")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
 
                     b.Property<string>("image_1")
                         .IsRequired()
@@ -182,7 +288,20 @@ namespace Bespeaking__Backup.Migrations
                         .HasMaxLength(1024)
                         .HasColumnType("nvarchar(1024)");
 
+                    b.Property<bool>("live")
+                        .HasColumnType("bit");
+
                     b.Property<string>("location")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("position")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -224,6 +343,14 @@ namespace Bespeaking__Backup.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("NumberOfBed")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<string>("description")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
                     b.Property<decimal?>("discount")
                         .HasColumnType("decimal(18,2)");
 
@@ -231,23 +358,50 @@ namespace Bespeaking__Backup.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("price")
+                        .HasMaxLength(10)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("roomImage")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1024)
+                        .HasColumnType("nvarchar(1024)");
 
                     b.Property<int>("roomSize")
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<string>("type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("hotelId");
 
                     b.ToTable("Rooms");
+                });
+
+            modelBuilder.Entity("Bespeaking.Models.Transaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("esewaId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("userId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("esewaId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Bespeaking.Models.User", b =>
@@ -315,6 +469,43 @@ namespace Bespeaking__Backup.Migrations
                     b.ToTable("UserRoles");
                 });
 
+            modelBuilder.Entity("Bespeaking.Models.BalanceSheet", b =>
+                {
+                    b.HasOne("Bespeaking.Models.User", "client")
+                        .WithMany()
+                        .HasForeignKey("clientId");
+
+                    b.Navigation("client");
+                });
+
+            modelBuilder.Entity("Bespeaking.Models.CheckIn", b =>
+                {
+                    b.HasOne("Bespeaking.Models.Hotel", "hotel")
+                        .WithMany()
+                        .HasForeignKey("hotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bespeaking.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("hotel");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Bespeaking.Models.Esewa", b =>
+                {
+                    b.HasOne("Bespeaking.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId");
+
+                    b.Navigation("user");
+                });
+
             modelBuilder.Entity("Bespeaking.Models.Hotel", b =>
                 {
                     b.HasOne("Bespeaking.Models.User", "user")
@@ -333,6 +524,25 @@ namespace Bespeaking__Backup.Migrations
                         .IsRequired();
 
                     b.Navigation("hotel");
+                });
+
+            modelBuilder.Entity("Bespeaking.Models.Transaction", b =>
+                {
+                    b.HasOne("Bespeaking.Models.Esewa", "esewa")
+                        .WithMany()
+                        .HasForeignKey("esewaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bespeaking.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("esewa");
+
+                    b.Navigation("user");
                 });
 #pragma warning restore 612, 618
         }

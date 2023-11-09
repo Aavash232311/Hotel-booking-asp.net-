@@ -48,7 +48,7 @@
     font-family: cursive;
 }
 .login-input {
-    width: 95%;
+    width: 90% !important;
     float: left;
     margin-left: 10px;
 }

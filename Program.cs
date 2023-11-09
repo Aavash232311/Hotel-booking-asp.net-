@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
-
+using Bespeaking.Hub;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -27,7 +27,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             RoleClaimType = "role"   // This line is important
         };
     });
-
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -55,5 +55,6 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");
+app.MapHub<ReviewHub>("/reviewSocket");
 
 app.Run();

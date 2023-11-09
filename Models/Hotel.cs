@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Numerics;
 
 namespace Bespeaking.Models
 {
@@ -8,6 +9,10 @@ namespace Bespeaking.Models
         [Key]
         public Guid Id { get; set; }
         public Guid LicenseKey { get; set; }
+        [MaxLength(100)]
+        public string name { get; set; } = string.Empty;
+        [MaxLength(100)]
+        public string position { get; set; } = string.Empty;
         [MaxLength(100)]
         public string location { get; set; } = string.Empty;
         public bool? Toiletries { get; set; } = false;
@@ -30,7 +35,7 @@ namespace Bespeaking.Models
         public bool? Slippers { get; set; } = false;
         public bool? Ironing_Services { get; set; } = false;
         public bool? Kettle { get; set; } = false;
-        [MaxLength(500)]
+        [MaxLength(2000)]
         public string description { get; set; } = string.Empty;
         [MaxLength(20)]
         public string checkIn { get; set; } = string.Empty;
@@ -56,6 +61,8 @@ namespace Bespeaking.Models
         public string? image_9 { get; set; } = string.Empty;
         [MaxLength(1024)]
         public string? image_10 { get; set; } = string.Empty;
+        public bool live { get; set; } = false;
         public User? user { get; set; }
+        public DateTime created { get; set; } = DateTime.Now;
     }
 }

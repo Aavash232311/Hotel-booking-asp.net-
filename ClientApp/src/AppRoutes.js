@@ -6,7 +6,10 @@ import RegisterHotel from "./components/Business/RegisterHotel";
 import Hotel from "./components/Business/Hotel";
 import RoomHotel from "./components/Business/HotelRoom";
 import HotemInfo from "./components/Business/HotelInfo";
-
+import PublicHotel from "./components/public/hotel";
+import Results from "./components/public/result";
+import Transaction from "./components/Business/transaction";
+import TransactionSuccess from "./components/public/transactionSuccess";
 const AppRoutes = [
   {
     index: true,
@@ -35,7 +38,7 @@ const AppRoutes = [
   {
     path: "/register-hotel",
     element: <RegisterHotel />,
-    login: true,
+    login: false,
     roles: []
   },
   {
@@ -55,6 +58,30 @@ const AppRoutes = [
     element: <HotemInfo />,
     login: true,
     roles: ["Manager"]
+  },
+  {
+    path: "/see-content",
+    element: <PublicHotel />,
+    login: false,
+    roles:[]
+  },
+  {
+    path: "/night-owl-me",
+    element: <Results />,
+    login: false,
+    roles: []
+  },
+  {
+    path: "/transaction",
+    element: <Transaction />,
+    login: true, 
+    roles: ["Manager"]
+  },
+  {
+    path: "/success-esewa",
+    element: <TransactionSuccess />,
+    login: true,
+    roles: []
   }
 ];
 

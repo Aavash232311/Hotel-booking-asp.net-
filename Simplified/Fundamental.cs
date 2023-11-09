@@ -14,38 +14,17 @@ namespace Bespeaking.Simplified
         public Fundamental(AuthDbContext op) { 
             _context = op;
         }
-
-        private static string[] fileExtension = { "jpg", "jepg", "png", "gif" };
-        public  bool HasProperty(object obj, string propertyName)
-        {
-            Type type = obj.GetType();
-            PropertyInfo? propertyInfo = type.GetProperty(propertyName);
-            return propertyInfo != null;
-        }
-       public  void LocationAndValue(dynamic obj, dynamic key, dynamic value, out dynamic newObject)
-        {
-            if (HasProperty(obj, key)) // making sure we have that key
-            {
-                obj.GetType().GetProperty(key).SetValue(obj, value);
-            }
-            newObject = obj;
-        }
-
         public Dictionary<string, string> validateStdImage(dynamic file, int maxSize)
         {
-            string fileName = file.FileName;
-            if (fileName.Split('.').Length == 1) { return new Dictionary<string, string>() { { "message", "file not supported" } }; }
-            string extension = fileName.Split('.')[1];
-            bool FileValid = false;
-            for (int i = 0; i < fileExtension.Length; i++)
-            {
-                if (fileExtension[i] == extension)
+            var contentType = file.ContentType;
+            var isImage = contentType.StartsWith("image/");
+            if (!isImage) {
+                return new Dictionary<string, string>()
                 {
-                    FileValid = true;
-                    break;
-                }
+                    {"message", "Unsuppored file" }
+                };
             }
-            if (!FileValid) { return new Dictionary<string, string>() { { "message", "file not supported" } }; }
+
             // check for file restriction 
             float sizeInbYTE = (file.Length / 1024);
             double inmB = sizeInbYTE / 1024;
@@ -137,6 +116,70 @@ namespace Bespeaking.Simplified
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
             return jwt;
+        }
+        public object GetAttr(dynamic classObject, dynamic name)
+        {
+            Type type = classObject.GetType();
+            PropertyInfo propertyInfos = type.GetProperty(name);
+            return propertyInfos.GetValue(classObject);
+
+        }
+        public  object CopyAttribute(dynamic populatedObject, dynamic newObject)
+        {
+            Type type = populatedObject.GetType();
+            PropertyInfo[] propertyInfos = type.GetProperties();
+
+            foreach (PropertyInfo i in propertyInfos)
+            {
+                try
+                {
+                    PropertyInfo info = type.GetProperty(i.Name);
+                    object getValue = info.GetValue(populatedObject);
+                    if (HasProperty(newObject, i.Name)) 
+                    {                                  
+                        if (getValue != null && getValue.ToString() != "" && getValue.ToString().Length > 0)
+                        {
+                            newObject.GetType().GetProperty(i.Name).SetValue(newObject, getValue);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+
+            }
+            return newObject;
+        }
+        public bool HasProperty(object obj, string propertyName)
+        {
+            Type type = obj.GetType();
+            PropertyInfo? propertyInfo = type.GetProperty(propertyName);
+            return propertyInfo != null;
+        }
+        public void LocationAndValue(dynamic obj, dynamic key, dynamic value, out dynamic newObject)
+        {
+            if (HasProperty(obj, key)) // making sure we have that key
+            {
+                obj.GetType().GetProperty(key).SetValue(obj, value);
+            }
+            newObject = obj;
+        }
+
+        public double Digree(double x)
+        {
+            return ((x * Math.PI) / 180);
+        }
+
+        public double Distance(double lat1, double lon1, double lat2, double lon2)
+        {
+            double dlat = Digree(lat2 - lat1);
+            double dlon = Digree(lon2 - lon1);
+            lat1 = Digree(lat1);
+            lat2 = Digree(lat2);
+            double a = Math.Pow(Math.Sin(dlat / 2), 2) + Math.Cos(lat1) * Math.Cos(lat2) * Math.Pow(Math.Sin(dlon / 2), 2);
+            double theta = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            return 6378 * theta;
         }
     }
 }

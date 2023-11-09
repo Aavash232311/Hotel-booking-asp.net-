@@ -19,8 +19,12 @@
     overflow: auto;
     overflow-x:hidden;
 }
-.input {
-    width: 90%;
+.input-r{
+  width: 100%;
+}
+.input-btn {
+  float: left;
+  margin-top: 20px;
 }
 .datetime {
     float: left;
@@ -109,9 +113,38 @@
   .imgPreviwe:hover {
     border: 2px solid black;
   }
+  .global-success {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    z-index: 999;
+    top: 0;
+    text-align: center;
+    user-select: none;
+  }
+  .cancel-alert {
+    float: right;
+    margin-left: 15px;
+  }
+
+  #some-powerful-autocomplete{
+    width: 100%;
+    position: absolute;
+    height: 200px;
+    z-index: 999;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  #map {
+    height: 500px;
+  }
 @media screen and (max-width: 767px) {
+    .input-r {
+      width: 100%;
+    }
     #hotel-register-frame {
-        width: 100%;
+        width: 100vw;
         height: 100vh;
     }
     .amenities-label-name {

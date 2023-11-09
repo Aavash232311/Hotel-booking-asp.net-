@@ -93,7 +93,7 @@ class Register extends Component {
                 onInput={this.updateState}
                 autoComplete="off"
                 name="username"
-                className="form-control partial-input"
+                className="form-control field"
                 placeholder="username"
                 required={true}
               ></input>
@@ -102,7 +102,7 @@ class Register extends Component {
                 autoComplete="off"
                 name="email"
                 type="email"
-                className="form-control partial-input"
+                className="form-control field"
                 placeholder="email"
                 required={true}
               ></input>
@@ -110,7 +110,7 @@ class Register extends Component {
                 onInput={this.updateState}
                 autoComplete="off"
                 name="city"
-                className="form-control partial-input"
+                className="form-control field"
                 placeholder="city"
                 required={true}
               ></input>
@@ -118,7 +118,7 @@ class Register extends Component {
                 onInput={this.updateState}
                 autoComplete="off"
                 name="address"
-                className="form-control partial-input"
+                className="form-control field"
                 placeholder="address"
                 required={true}
               ></input>
@@ -126,7 +126,7 @@ class Register extends Component {
                 onInput={this.updateState}
                 placeholder="password"
                 type="password"
-                className="form-control input"
+                className="form-control field"
                 name="password"
                 required={true}
               ></input>
@@ -134,7 +134,7 @@ class Register extends Component {
                 onInput={this.updateState}
                 placeholder="conform password"
                 type="password"
-                className="form-control input"
+                className="form-control field"
                 name="confrom_password"
                 required={true}
               ></input>
@@ -142,14 +142,14 @@ class Register extends Component {
                 onInput={this.updateState}
                 placeholder="phone number"
                 type="number"
-                className="form-control input"
+                className="form-control field"
                 name="phone"
                 required={true}
               ></input>
               <input
                 type="submit"
                 value="submit"
-                className="btn btn-outline-success form-control input"
+                className="btn btn-outline-success form-control field"
               ></input>
             </form>
           </div>

@@ -1,0 +1,286 @@
+#hotel-checkout-options {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  width: 50%;
+  height: 500px;
+  position: absolute;
+  left: 25%;
+  background-color: white;
+  z-index: 9999;
+  top: 70px;
+  position: fixed;
+}
+
+.cross-dot {
+  width: 100%;
+  text-align: left;
+  font: 50px;
+  float: left;
+  color:red;
+}
+
+#navbarPin {
+  background-color: red;
+  left: 0;
+  position: absolute;
+  height: 70px;
+  background-image: linear-gradient(
+    to right top,
+    #051937,
+    #002742,
+    #003549,
+    #00424c,
+    #174f4d
+  );
+  width: 100vw;
+  color: white;
+}
+#search-list {
+  float: left;
+  width: 300px;
+  height: 500px;
+  margin-top: 80px;
+  position: relative;
+  left: 15px;
+  user-select: none;
+}
+#check-out-options-hotel {
+  float: left;
+  width: 70%;
+  height: 500px;
+  right: 15px;
+  z-index: 99999999;
+  user-select: none;
+  text-align: left;
+}
+
+.hotel-search {
+  width: 99%;
+  outline-width: 0;
+  border: none;
+}
+.hotel-search:focus {
+  border: 2px solid rgb(45, 45, 99);
+}
+.hotel-search-div {
+  width: 99%;
+  background-color: white;
+  margin-top: 20px;
+  height: 40px;
+  border-radius: 5px;
+  text-align: center;
+}
+#blur-plus {
+  position: relative;
+  height: 200px;
+}
+.search-slide-text {
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+.right-grild {
+  float: right;
+  width: 75%;
+  margin-top: 90px;
+  height: auto;
+  margin-right: 15px;
+}
+h1 {
+  color: black;
+}
+.hotel-features {
+  display: grid;
+  grid-template-columns: 350px repeat(2, 250px);
+  grid-gap: 5px;
+  float: left;
+  width: 20%;
+}
+#image-grid {
+  display: grid;
+  grid-template-columns: 350px repeat(2, 250px);
+  grid-gap: 5px;
+  float: left;
+  width: 100%;
+  row-gap: 5px;
+  user-select: none;
+}
+.image-1 {
+  width: 350px;
+  height: 200px;
+}
+.small-iamges {
+  width: 250px;
+  height: 200px;
+}
+.more-blured {
+  height: 200px;
+}
+#plus-icon {
+  position: absolute;
+  font-size: 100px;
+  color: rgb(214, 202, 202);
+  z-index: 9999;
+  top: 25%;
+  left: 25%;
+}
+#plus-icon:hover {
+  color: #002742;
+}
+
+.frameMain {
+  width: 100vw !important;
+  height: 100vh;
+  background-repeat: repeat;
+  float: right;
+  position: absolute;
+  right: 0;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  overflow-y: auto;
+}
+.checkicon {
+  float: right;
+  color: green;
+  margin-right: 50%;
+}
+#description {
+  float: left;
+  margin-top: 20px;
+  white-space: inherit;
+  width: 50%;
+}
+#search-icon {
+  margin-left: 5px;
+  float: left;
+}
+.room-options {
+  float: left;
+  width: 70%;
+  min-height: 280px;
+  border-radius: 8px;
+  margin-top: 10px;
+  height: auto;
+}
+#selected-adults {
+  width: 200px;
+  height: 50px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.ppl-icon-text-btn {
+  width: 2px;
+  font-size: small;
+}
+.btn-list {
+  float: left;
+  text-align: center;
+  width: 10%;
+}
+.btn-trim {
+  margin-top: 5px;
+}
+.ppl-icon {
+  margin-top: 15px;
+  margin-left: 8px;
+  float: left;
+}
+.ppl-icon-text {
+  margin-left: 5px;
+  float: left;
+  margin-top: 10px;
+}
+
+.room-images {
+  float: right;
+  margin-right: 5px;
+  width: 150px;
+  height: 100px;
+  margin-top: 10px;
+}
+.select-room-btn {
+  border: none;
+  background-color: transparent;
+  border: 1px solid #003549;
+  margin-top: 10px;
+  width: 100%;
+}
+.select-room-btn:hover {
+  background-color: #002742;
+  color: white;
+}
+.room-option-content {
+  float: left;
+  margin-left: 5px;
+  width: 60%;
+  height: 200px;
+  text-align: left;
+  margin: 5px;
+}
+@media screen and (max-width: 1352px) {
+  .right-grild {
+    float: left;
+    margin-left: 15px;
+    width: 80%;
+    margin-right: 15px;
+  }
+  #search-list {
+    width: 500px;
+    position: relative;
+    margin-bottom: 50px;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 446px) {
+  .room-option-content {
+    width: 100%;
+  }
+  .room-options{
+    height: 250px;
+  }
+  .room-images {
+    height: 80px;
+    width: 80px;
+    float: right;
+    margin-top: -150px;
+  }
+}
+
+@media screen and (max-width: 874px) {
+  #check-out-options-hotel {
+    width: 100vw;
+  }
+  .room-options {
+    width: 100vw;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  #search-list {
+    width: 98vw;
+    position: relative;
+    margin-bottom: 50px;
+    left: 0;
+  }
+  .right-grild {
+    margin-left: 0;
+  }
+  #description {
+    width: 100%;
+  }
+  #image-grid {
+    grid-template-columns: 1fr repeat(1, 1fr);
+    grid-gap: 5px;
+    row-gap: 5px;
+    width: 100vw;
+    margin-left: 0;
+  }
+  .image-1  {
+    width: 100%;
+  }
+  .frameMain {
+    width: 100%;
+  }
+  .small-iamges {
+    width: 100%;
+  }
+}

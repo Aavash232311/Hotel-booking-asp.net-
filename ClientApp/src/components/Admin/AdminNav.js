@@ -36,7 +36,7 @@ class AdminNav extends Component {
   render() {
     return (
       <div>
-        <div id="adminFrame">
+        <div className="adminFrame">
           <div id="admin">
             <BsStack
               id="nav-toggle"

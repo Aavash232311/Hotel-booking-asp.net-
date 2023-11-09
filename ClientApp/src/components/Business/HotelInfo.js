@@ -4,6 +4,7 @@ import Services from "../../utils/services";
 import "../Static/business/info.css";
 import { AiOutlineCopy } from "react-icons/ai";
 import RegisterHotel from "./RegisterHotel";
+import {AiOutlineLink} from "react-icons/ai"
 
 class HotemInfo extends Component {
   state = {};
@@ -36,6 +37,7 @@ class HotemInfo extends Component {
         <div>
           <Hotel />
         </div>
+
         {this.state.hotel !== null ? (
           <div>
             <hr style={{ visibility: "hidden", height: "80px" }}></hr>
@@ -48,6 +50,7 @@ class HotemInfo extends Component {
                   <th>hotel rating</th>
                   <th>secret license key</th>
                   <th></th>
+                  <th>link</th>
                 </tr>
                 <tr>
                   <th>{this.state.hotel.company.name}</th>
@@ -64,6 +67,9 @@ class HotemInfo extends Component {
                       }}
                       id="copy-icon"
                     />
+                  </th>
+                  <th>
+                    <AiOutlineLink onClick={() => {window.location.href = "/see-content?id=" + this.state.hotel.hotel.id}} ></AiOutlineLink>
                   </th>
                 </tr>
               </tbody>

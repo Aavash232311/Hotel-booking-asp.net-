@@ -17,31 +17,38 @@ export default class App extends Component {
       loading: false,
       isLoggedIn: false,
     };
+    // this.intervalId = setInterval(this.refreshToken, 270000); // 4.5 minutes in milliseconds
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
   }
 
   componentDidMount = () => {
-    const setToken = () => {
-      fetch("auth/RefreshToken", {
-        credentials: "include",
+    this.refreshToken();
+  }
+
+  refreshToken = async () => {
+    try {
+      await fetch("auth/RefreshToken", {
+        method: "get",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + this.utils.getToken(),
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
+      }).then(rs => rs.json()).then((response) => {
+        const {statusCode, value} = response;
+        if (statusCode === 200) {
+          localStorage.setItem("authToken", value);
+        }else{
+          // localStorage.removeItem("authToken", value); // login required 
+        }
       })
-        .then((rsp) => rsp.json())
-        .then((response) => {
-          if (response.statusCode === 200) {
-            localStorage.setItem("authToken", response.value);
-          }else {
-            setToken();
-          }
-        });    
-    };
-    setToken();
-    setInterval(() => {
-      setToken();
-    }, 300000);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+
   render() {
     const RouteStackMiddleware = (rest) => {
       const [loggedIn, setLoggedIn] = React.useState(null);
@@ -62,7 +69,7 @@ export default class App extends Component {
           }
         });
         if (loggedIn === false) {
-          return <>Something went teribally wrong run fast!!</>;
+          return <>user not logged in {localStorage.getItem("authToken")}</>;
         }
         if (loggedIn === true) {
           if (roles.length === 0) return <Outlet />; // since we dont need any roles to access particular page

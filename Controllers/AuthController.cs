@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
+using Bespeaking.Simplified;
 
 namespace restaurant_franchise.Controllers
 {
@@ -32,9 +33,11 @@ namespace restaurant_franchise.Controllers
     public class AuthController : ControllerBase
     {
         public AuthDbContext _context;
+        public Fundamental helper;
         public AuthController(AuthDbContext context)
         {
             this._context = context;
+            this.helper = new Fundamental(context);
         }
         [HttpPost]
         [Route("register")]
@@ -89,30 +92,28 @@ namespace restaurant_franchise.Controllers
         public async Task<IActionResult> WhiteListToken()
         {
             var refreshToken = Request.Cookies["refreshToken"];
-            var User = _context.Users.Where(x => x.RefreshToken == refreshToken).FirstOrDefault();
-            if (User == null)
-            {
-                return new JsonResult(Unauthorized("Bad request very bad 1"));
-            }
-            if (!User.RefreshToken.Equals(refreshToken))
-            {
-                return new JsonResult(Unauthorized("Bad request very bad 2"));
-            }
-            else if (User.BlackListToken < DateTime.Now)
-            {
-                return new JsonResult(Unauthorized("Bad request very bad 3"));
-            }
+            var user = helper.GetUser(Request.Headers["Authorization"]);
+            if (user == null) return new JsonResult(NotFound(new { value = "user not found" }));
+            if (refreshToken != user.RefreshToken) return new JsonResult(Unauthorized(new {value = "server did not responsed anything :( "}));
+            // now lets check if the token (refresh) is valid
+            if (user.BlackListToken < DateTime.Now) return new JsonResult(Unauthorized(new {value = "session expired"}));
 
-            string accessToken = await CreateToken(User);
-            // random token with assign and expirey date
-            var newRefreshToken = GenerateToken();
+            // get the user first
+            // check if the token from the cookie is equal to the refresh token saved in the database
+            // check for the refresh token validation date
+            // if everything okay even if access token is expired assign user a new one
+            // aslo add a new refresh token so as s
+
+             string accessToken = await CreateToken(user);
+               // random token with assign and expirey date
+             var newRefreshToken = GenerateToken();
 
 
-            // assign token to http only cookie and save it in user record
-            AssignHttpOnlyCookie(newRefreshToken, out RefreshToken RefreshTokenInfo);
-            User.RefreshToken = RefreshTokenInfo.Token;
-            User.DateCreated = RefreshTokenInfo.Date;
-            User.BlackListToken = RefreshTokenInfo.BlackListDate;
+               // assign token to http only cookie and save it in user record
+              AssignHttpOnlyCookie(newRefreshToken, out RefreshToken RefreshTokenInfo);
+              user.RefreshToken = RefreshTokenInfo.Token;
+              user.DateCreated = RefreshTokenInfo.Date;
+            user.BlackListToken = RefreshTokenInfo.BlackListDate;
             await _context.SaveChangesAsync();
             return new JsonResult(Ok(accessToken));
         }

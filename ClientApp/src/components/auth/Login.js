@@ -31,6 +31,8 @@ class Login extends Component {
                       let myParam = urlParams.get("call"); // conept of callback function
                       if (!myParam) {
                         window.location.href = "/";
+                      }else{
+                        window.location.href = "/" + myParam;
                       }
                     }
                   });

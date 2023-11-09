@@ -41,7 +41,7 @@ class RoomHotel extends Component {
     const formData = new FormData();
     for (const i in this.state) {
       formData.append(i, this.state[i]);
-    }
+    };
     fetch("hotel/add-rooms", {
       headers: {
         Authorization: "Bearer " + this.utils.getToken(),
@@ -51,9 +51,41 @@ class RoomHotel extends Component {
     })
       .then((rsp) => rsp.json())
       .then((response) => {
-        console.log(response);
+        const { value, statusCode } = response;
+        if (statusCode === 200) {
+          this.setState(
+            (prv) => ({
+              rooms: [...prv.rooms, value],
+            }),
+            () => {
+              e.target.reset();
+            }
+          );
+          if (this.state.src !== undefined) this.setState({ src: null });
+        }
       });
   };
+
+  deleteRoom = (id) => {
+    fetch("hotel/delete-room?id=" + id, {
+      headers: {
+        Authorization: "Bearer " + this.utils.getToken(),
+      },
+      method: "get",
+    }).then(rsp => rsp.json()).then((response) => {
+      const {statusCode, value} = response;
+      if (statusCode === 200) {
+        const c = this.state.rooms;
+        if (c !== undefined) {
+          const filter = this.state.rooms.filter(x => x.id !== value.id);
+          this.setState({rooms: filter});
+        }
+        if (value.count === 0) {
+          window.location.reload();
+        }
+      }
+    });
+  }
   render() {
     return (
       <>
@@ -102,13 +134,38 @@ class RoomHotel extends Component {
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">
-                discounted price (%)
+                discounted price (%) <b>all VAT included</b>
               </label>
               <input
                 type="number"
                 className="form-control"
                 placeholder="eg  10"
                 name="discount"
+                defaultValue={0}
+                onInput={this.update}
+                autoComplete="off"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleInputPassword1">
+                Description (Optional)
+              </label>
+              <textarea
+                className="form-control"
+                placeholder="some small features in less than 30 words"
+                name="description"
+                onInput={this.update}
+                autoComplete="off"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleInputPassword1">
+                number of beds
+              </label>
+              <input
+                className="form-control"
+                placeholder="eg 2"
+                name="NumberOfBed"
                 onInput={this.update}
                 autoComplete="off"
               />
@@ -141,51 +198,51 @@ class RoomHotel extends Component {
           <hr />
           {this.state.rooms !== null ? (
             <>
-            <div id="selectedRoomTable">
-              <table className="table" >
-                <tbody>
-                  <tr>
-                    <th>SN</th>
-                    <th>Type</th>
-                    <th>Size</th>
-                    <th>Price</th>
-                    <th>Discount</th>
-                    <th>Image</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                  {this.state.rooms.map((i, j) => {
-                    return (
-                      <React.Fragment key={j}>
-                        <tr>
-                          <th>{j}</th>
-                          <th>{i.type}</th>
-                          <th>{i.roomSize} sq.ft</th>
-                          <th>{i.price}</th>
-                          <th>{i.discount === null ? "No" : i.discount}</th>
-                          <th>
-                            <img
-                              src={"/images/" + i.roomImage}
-                              height="50"
-                              width="50"
-                            ></img>
-                          </th>
-                          <th>
-                            <button className="btn btn-outline-primary">
-                              edit
-                            </button>
-                          </th>
-                          <th>
-                            <button className="btn btn-outline-danger">
-                              delete
-                            </button>
-                          </th>
-                        </tr>
-                      </React.Fragment>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <div id="selectedRoomTable">
+                <table className="table">
+                  <tbody>
+                    <tr>
+                      <th>SN</th>
+                      <th>Type</th>
+                      <th>Size</th>
+                      <th>Price</th>
+                      <th>Discount</th>
+                      <th>Image</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                    {this.state.rooms.map((i, j) => {
+                      return (
+                        <React.Fragment key={j}>
+                          <tr>
+                            <th>{j}</th>
+                            <th>{i.type}</th>
+                            <th>{i.roomSize} sq.ft</th>
+                            <th>{i.price}</th>
+                            <th>{i.discount === null ? "No" : i.discount}</th>
+                            <th>
+                              <img
+                                src={"/images/" + i.roomImage}
+                                height="50"
+                                width="50"
+                              ></img>
+                            </th>
+                            <th>
+                              <button className="btn btn-outline-primary">
+                                edit
+                              </button>
+                            </th>
+                            <th>
+                              <button onClick={() => {this.deleteRoom(i.id)}} className="btn btn-outline-danger">
+                                delete
+                              </button>
+                            </th>
+                          </tr>
+                        </React.Fragment>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             </>
           ) : null}

@@ -3,7 +3,7 @@ export default class Services {
   getToken = () => {
     return localStorage.getItem("authToken");
   };
-  isLoggedIn() {
+  async isLoggedIn() {
     if (this.getToken() === null) {
       return Promise.resolve({ value: false });
     }
@@ -32,5 +32,13 @@ export default class Services {
         return userRole;
       }
     }
+  }
+  userId() {
+    const decoded = jwt_decode(this.getToken());
+    for (let i in decoded) {
+      if (i === "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name") {
+        return decoded[i];
+      }
+    } // for other api write logic here
   }
 }

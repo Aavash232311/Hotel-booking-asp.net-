@@ -37,7 +37,7 @@
   z-index: 9999;
 }
 
-#adminFrame {
+.adminFrame {
   width: 100vw !important;
   background-size: cover;
   height: 100vh;

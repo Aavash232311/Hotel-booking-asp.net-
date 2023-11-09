@@ -8,7 +8,10 @@ const context = [
     "/auth",
     "/admin",
     "/hotel",
-    "/images"
+    "/images",
+    "/reviewSocket",
+    "/api",
+    "/transaction"
 ];
 
 const onError = (err, req, resp, target) => {

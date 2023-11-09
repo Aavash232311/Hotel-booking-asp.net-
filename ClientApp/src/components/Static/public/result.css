@@ -1,0 +1,81 @@
+.hotel-block {
+    width: 80%;
+    min-height: 200px;
+    min-height: 300px;
+    margin-top: 10px;
+    position: relative;
+    margin-left: 15px;
+    height: auto;
+    overflow-x: hidden;
+}
+.hotel-block:hover {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+#hotel-grid {
+    width:  80%;
+    float: right;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.hotel-description {
+    margin-left: 10px;
+    width: 60%;
+}
+
+.theme {
+    float: right;
+    height: 200px;
+    width: 250px;
+    position: absolute;
+    right: 15px;
+    overflow-x: hidden;
+} 
+#filter{
+    float: left;
+    width: 250px;
+    height: 500px;
+    overflow: auto;
+}
+.location-checkbox {
+    float: right;
+    right: 0;
+    position: relative;
+}
+
+#next-page {
+    width: 80%;
+    margin-top: 10px;
+    z-index: 999;
+    overflow-x: hidden;
+    text-align: center;
+    height: 65px;
+    display: grid;
+    overflow-y: hidden;
+    margin-left: 15px;
+    overflow-x: auto;
+    margin-top: 150px;
+    position: relative;
+}
+.bnt-css {
+    float: left;
+    list-style: none;
+    margin-bottom: -10px;
+    margin-top: -10px;
+    margin-left: 15px;
+    width: 80px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+    background: linear-gradient(to bottom,  rgba(79,133,187,1) 0%,rgba(79,133,187,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    height: 50px;
+    color: white;
+    text-align: center;
+    user-select: none;
+}
+
+.btn-txt-align {
+    position: absolute;
+    top: 30%;
+}

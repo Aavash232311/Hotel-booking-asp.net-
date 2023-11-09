@@ -10,6 +10,21 @@
     pointer-events: auto;
     z-index: 1;
 }
+.alertHotel {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999999999;
+    left: 0;
+}
+#warningLeft {
+    z-index: 99999;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 30%;
+    left: 0;
+}
 
 
 .nav-list {

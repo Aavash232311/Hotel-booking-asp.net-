@@ -4,10 +4,12 @@ import Services from "../utils/services";
 import { NavItem, NavLink } from "reactstrap";
 import { Link } from "react-router-dom";
 import AuthContext, { AuthProvider } from "./auth";
-
+import styles from "./Static/public/view.css";
+import { BiCurrentLocation } from "react-icons/bi";
 class Nav extends Component {
   constructor(props) {
     super(props);
+    this.detail = this.props.detail;
     this.utils = new Services();
     this.state = {
       login: false,
@@ -41,11 +43,23 @@ class Nav extends Component {
             const role = this.utils.getUserRole(user);
 
             return (
-              <div id="nav-bar">
-                <div id="logo">Bespeaking</div>
+              <div id={this.detail === "b" ? "navbarPin" : "nav-bar"}>
+                <div
+                  id="logo"
+                  style={
+                    this.detail ? { marginTop: "15px" } : { cursor: "pointer" }
+                  }
+                >
+                  <NavItem>
+                    <NavLink tag={Link} to="/">
+                      Bespeaking
+                    </NavLink>
+                  </NavItem>
+                </div>
                 <div id="u-list-nav">
                   <div className="h-list">
-                    {this.utils.getUserRole() === "Manager" ? (
+                    {this.utils.getUserRole() === "Manager" &&
+                    this.state.login ? (
                       <>
                         <div className="h-list">
                           <NavItem>
