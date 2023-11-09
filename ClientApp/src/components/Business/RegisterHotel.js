@@ -38,7 +38,7 @@ class RegisterHotel extends Component {
     this.simpleState.bind(this);
     this.mapRef = React.createRef();
     this.bingKey =
-      "AjcOmy-gQ852_30qBsMVq8cxTlPqY2uPoqsWbt2wdOvsxyGE1nfxFCTQmGBqQy7T";
+      "";
     this.fameRef = React.createRef();
   }
   state = {
