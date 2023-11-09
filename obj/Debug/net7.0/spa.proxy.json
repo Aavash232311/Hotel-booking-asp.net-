@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:44489",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\aavas\\source\\repos\\Bespeaking\\ClientApp\\",
+"MaxTimeoutInSeconds": "120"
+}
+}
