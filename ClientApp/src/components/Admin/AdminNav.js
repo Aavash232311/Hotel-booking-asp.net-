@@ -4,7 +4,10 @@ import { BsStack } from "react-icons/bs";
 import User from "./User";
 import Role from "./Role";
 import Company from "./Company";
-
+// in this admin panel we have broken css
+// due to bootstrap and thiis react css overlapping
+// so the entrie structure of this application is messed up
+// so we are recreating another one 
 class AdminNav extends Component {
   state = {
     render: "",
