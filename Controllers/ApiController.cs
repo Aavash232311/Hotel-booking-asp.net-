@@ -1,4 +1,4 @@
-﻿using Bespeaking.Data;
+using Bespeaking.Data;
 using Bespeaking.Models;
 using Bespeaking.Simplified;
 using Microsoft.AspNetCore.Http;
@@ -44,8 +44,10 @@ namespace Bespeaking.Controllers
                 /* a = sin2(dlat / 2) + cos(lat1).cost(lat2) sin(dlon/2) */
                 // c = a tan inverse (root a, root 1 - a
                 // d = R.c R = radious of earth 
+                
                 if (d <= 5.13 && i.live == true)
                 {
+                   // not the efficient way to query but for testing it will do fine
                     hotels.Add(i);
                 }
             }
