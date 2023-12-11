@@ -51,6 +51,7 @@ export default class App extends Component {
 
   render() {
     const RouteStackMiddleware = (rest) => {
+      // we can improve there are still some minor issues 
       const [loggedIn, setLoggedIn] = React.useState(null);
       if (rest.login) {
         //since the user is logged in lets check in the required role
