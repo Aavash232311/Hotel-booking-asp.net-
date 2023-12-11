@@ -1,4 +1,4 @@
-﻿using Bespeaking.Data;
+using Bespeaking.Data;
 using Bespeaking.Models;
 using Microsoft.AspNetCore.Mvc;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -113,7 +113,7 @@ namespace Bespeaking.Controllers
                 var company = _context.Comapnies.OrderByDescending(x => x.CreatedDate).Take(10).ToList();
                 return new JsonResult(company);
             }
-
+            // todo use pagination here 
             var lastItemDate = DateTime.Parse(LastItem);
             var dataBelow = _context.Comapnies.Where(x => x.CreatedDate < lastItemDate).OrderByDescending(x => x.CreatedDate).Take(5).ToList();
             return new JsonResult(dataBelow);
