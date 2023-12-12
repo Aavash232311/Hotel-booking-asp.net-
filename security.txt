@@ -1,0 +1,19 @@
+We use a custom json web token in our 
+asp.net trying to create a security system from
+scratch. Here we are using a traditional jwt authorization
+
+1 after the client logs in they are assigned with a jwt token
+2 the jwt token includes some information like 
+client role, username, expirey date
+2 the assigned jwt will get expired after some
+time intervial 
+3 we are doing a long poling to renew the 
+jwt token before it expires 
+4 since we are using a client site framework 
+(react) which needs seprate configuration to
+secure UI or pages from only authorized user
+5 the jwt token or access token is renewed
+with the help of refresh token which has a long 
+expirey date then access token probally for like
+days. So as long as user has a valid refreh token
+they can refresh their access token
