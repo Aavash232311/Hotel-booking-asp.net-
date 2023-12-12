@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Bespeaking.Models;
 using System.Security.Cryptography;
 using Bespeaking.Data;
@@ -183,7 +183,7 @@ namespace restaurant_franchise.Controllers
                 var newUserRole = new Roles()
                 {
                     UserId = user.Id,
-                    RoleId = 2,
+                    RoleId = 2, // here try and assign roles by name
                 };
                 _context.Roles.Add(newUserRole);
                 await _context.SaveChangesAsync();
