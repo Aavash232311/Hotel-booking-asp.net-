@@ -1,4 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using Bespeaking.Models;
 using System.Security.Claims;
@@ -60,14 +60,15 @@ namespace Bespeaking.Simplified
             return obj;
         }
         public User GetUser(dynamic token)
-        {
+            { // add some exception handling 
             string newToken = token.ToString().Split(' ')[1];
+             // use more secure key and incode it
             byte[] secretKey = System.Text.Encoding.UTF8.GetBytes("my top secret key");
             var tokenHandler = new JwtSecurityTokenHandler();
             var data = tokenHandler.ReadJwtToken(newToken);
             IEnumerable<Claim> claims = data.Claims;
             string uniqueUser = claims.First(claim => claim.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value;
-            var user = _context.Users.Where(x => x.username == uniqueUser).FirstOrDefault();
+            var user = _context.Users.Where(x => x.username == uniqueUser).FirstOrDefault(); // use string or default 
             if (user == null)
             {
                 return null;
