@@ -24,7 +24,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = false,
             ValidateAudience = false,
             NameClaimType = "name",  // This line is important
-            RoleClaimType = "role"   // This line is important
+// DECODE JWT AND GET THE JSON VALUE THAT CORRESPONDS TO THE ROLE AND REPLACE THAT INSTEAD OF ROLE
+            RoleClaimType = "role"  
         };
     });
 builder.Services.AddSignalR();
